@@ -1,0 +1,7 @@
+<mvc:View controllerName="com.surya.northwindv4p1.controller.View1"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page1" title="{i18n>title}">
+    <Button id="button1" text="Test OData V4" press="onTestV4"></Button>
+    </Page>
+</mvc:View>
