@@ -10,7 +10,7 @@ sap.ui.define([
         },
 
         onTestV4() {
-
+            // "Testing the git hub"
             var oModel = this.getView().getModel();
 
             var oModel = this.getOwnerComponent().getModel();
