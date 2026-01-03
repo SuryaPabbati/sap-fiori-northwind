@@ -23,7 +23,27 @@ sap.ui.define([
             var oModel = this.getOwnerComponent().getModel();
             oModel.read("/Products", {
                 success: ok,
-                error: ok
+                 error: function (response) {
+                    sap.ui.core.BusyIndicator.hide();
+                    var sMsg = response.responseText;
+                    var sError = "Error call service!!";
+                    if (sMsg !== undefined) {
+                        try {
+                            var oMessage = JSON.parse(sMsg);
+                            if (oMessage && oMessage.error && oMessage.error.message) {
+                                sError = oMessage.error.message.value;
+                            } else {
+                                sError = "Error " + oMessage.statusCode + "Connection Failed for " + oMessage.requestUri;
+                            }
+                        } catch (e) {
+                            sError = sMsg;
+                        }
+                    }
+                    var oError = {
+                        msg: sError
+                    };
+                    sap.m.MessageToast.show(oError.msg);
+                }.bind(this)
                 }
             )
             
